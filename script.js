@@ -35,13 +35,13 @@
   // 2. A YouTube or Twitch *embed* URL, e.g. 'https://www.youtube.com/embed/VIDEO_ID' or
   //    'https://clips.twitch.tv/embed?clip=CLIP_SLUG&parent=YOURDOMAIN' - rendered as an iframe.
   // Leave empty and the slot renders a finished-looking "intro coming soon" placeholder instead.
-  const FEATURED_VIDEO_EMBED_URL = '';
+  const FEATURED_VIDEO_EMBED_URL = 'https://github.com/louiscrazydev/crazy-website-assets/blob/main/images/Black%20Green%20Modern%20Gaming%20Twitch%20Overlay%20(4)%20(1).mp4?raw=true';
 
   // Drop a direct, hosted video *file* URL here (e.g. 'images/about-bg.mp4') to enable a
   // muted, looping ambient background video behind the About Me bio. Keep it short (6-15s)
   // and compressed (aim under ~5MB) since it loops seamlessly and doesn't need length.
   // Leave empty and the About page renders exactly as it does today, no request is made.
-  const ABOUT_BG_VIDEO_URL = '';
+  const ABOUT_BG_VIDEO_URL = 'https://github.com/louiscrazydev/crazy-website-assets/blob/main/images/About%20me%20se.mp4?raw=true';
 
   const interestItems = [
     {
