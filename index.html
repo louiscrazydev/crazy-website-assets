@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Louis "Crazy" Ingram</title>
+<meta name="description" content="Louis Crazy Ingram, variety gamer and streamer based in Delaware. Watch on Twitch, join The Crazy House on Discord.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bungee&family=Bungee+Shade&family=Bungee+Inline&family=Monoton&family=Bangers&family=Rubik+Mono+One&family=Rubik+Glitch&family=Anton&family=Archivo+Black&family=Luckiest+Guy&family=Permanent+Marker&family=Oswald:wght@400;500;600;700&family=Faster+One&family=Passion+One:wght@400;700;900&family=Bebas+Neue&family=Press+Start+2P&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=Work+Sans:wght@400;500;600;700&family=Roboto:wght@400;500;700&family=Karla:wght@400;500;600;700&family=Nunito:wght@400;500;600;700&family=Mulish:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&family=Nunito+Sans:wght@400;500;600;700&family=Lato:wght@400;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body data-mode="dark" data-theme="signature" data-font="signature">
+
+<div class="splash" id="splash" role="presentation" aria-hidden="true">
+  <div class="splash-glow" aria-hidden="true"></div>
+  <div class="splash-content">
+    <svg width="72" height="72" viewBox="0 0 40 40" fill="none" class="splash-mascot">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="splash-word">CRAZY</div>
+    <div class="splash-tagline">Welcome to The Crazy House</div>
+  </div>
+</div>
+
+<canvas id="particles"></canvas>
+
+<header class="topbar" id="topbar">
+  <div class="topbar-row">
+    <a href="#/home" class="brand" data-route="home">
+      <svg width="30" height="30" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+        <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+        <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-word">CRAZY</span>
+    </a>
+
+    <nav class="pill-nav" id="pillNav">
+      <a href="#/home" data-route="home" class="pill-nav-link">Home</a>
+      <a href="#/about" data-route="about" class="pill-nav-link">About</a>
+      <a href="#/games" data-route="games" class="pill-nav-link">Games</a>
+      <a href="#/schedule" data-route="schedule" class="pill-nav-link">Schedule</a>
+      <a href="#/socials" data-route="socials" class="pill-nav-link">Socials</a>
+      <a href="#/support" data-route="support" class="pill-nav-link">Support</a>
+      <span class="pill-nav-indicator" id="pillIndicator" aria-hidden="true"></span>
+    </nav>
+
+    <div class="controls">
+      <div class="picker">
+        <button class="ctrl-btn" id="themeBtn" aria-haspopup="true" aria-expanded="false" aria-controls="themePanel">
+          <span aria-hidden="true">🎨</span> Appearance
+        </button>
+        <div class="picker-panel" id="themePanel" hidden>
+          <div class="picker-panel-title">Theme presets</div>
+          <div class="swatch-grid" id="swatchGrid"></div>
+          <div class="picker-panel-title picker-panel-title-2">Mode</div>
+          <div class="mode-row">
+            <button class="mode-opt" data-mode-opt="dark">Dark</button>
+            <button class="mode-opt" data-mode-opt="light">Light</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="picker">
+        <button class="ctrl-btn ctrl-btn-aa" id="fontBtn" aria-haspopup="true" aria-expanded="false" aria-controls="fontPanel">Aa</button>
+        <div class="picker-panel" id="fontPanel" hidden>
+          <div class="picker-panel-title">Font pairing</div>
+          <div class="font-list" id="fontList"></div>
+        </div>
+      </div>
+
+      <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="btn-outline-sm nav-cta">Watch Live</a>
+
+      <button class="hamburger" id="navToggle" aria-haspopup="true" aria-expanded="false" aria-controls="navMenu" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- Kept outside <header> deliberately: the header's backdrop-filter creates a new
+     containing block for position:fixed descendants, which would confine these
+     overlays to the header's own small box instead of the full viewport. -->
+<div class="nav-drawer-backdrop" id="navBackdrop" hidden></div>
+<nav class="nav-drawer" id="navMenu" hidden>
+  <button class="nav-drawer-close" id="navClose" aria-label="Close menu">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M2 2l12 12M14 2L2 14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+  </button>
+  <a href="#/home" data-route="home">Home</a>
+  <a href="#/about" data-route="about">About</a>
+  <a href="#/games" data-route="games">Games</a>
+  <a href="#/schedule" data-route="schedule">Schedule</a>
+  <a href="#/socials" data-route="socials">Socials</a>
+  <a href="#/support" data-route="support">Support</a>
+</nav>
+
+<main id="viewport">
+
+  <!-- HOME -->
+  <section class="view" data-view="home" id="view-home">
+    <div class="view-scroll">
+
+      <div class="hero">
+        <div class="hero-glow" aria-hidden="true"></div>
+        <div class="hero-grid">
+          <div>
+            <div class="status-badge">
+              <span class="status-dot" aria-hidden="true"></span>
+              <span id="currentlyText">Building toward Twitch Partner.</span>
+            </div>
+            <div class="eyebrow">LOUIS &quot;CRAZY&quot; INGRAM &nbsp;&middot;&nbsp; DELAWARE</div>
+            <h1 class="hero-title" id="heroTitle">CRA<span class="pulse-letter">Z</span>Y</h1>
+            <p class="hero-copy">
+              I'm a <span id="typewriter" class="typewriter"></span>
+            </p>
+            <p class="hero-sub">Building my channel one stream at a time. No filter, no script.</p>
+            <div class="hero-ctas">
+              <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="btn-fill magnetic">Watch on Twitch</a>
+              <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="btn-outline magnetic">Join Discord</a>
+            </div>
+          </div>
+          <div class="hero-photo-wrap" id="heroParallax">
+            <div class="hero-photo-bg" aria-hidden="true">
+              <span class="hero-bg-grid"></span>
+              <span class="hero-bg-block hero-bg-block-1"></span>
+              <span class="hero-bg-block hero-bg-block-2"></span>
+              <span class="hero-bg-block hero-bg-block-3"></span>
+              <span class="hero-bg-ring hero-bg-ring-1"></span>
+              <span class="hero-bg-ring hero-bg-ring-2"></span>
+              <span class="hero-bg-ring hero-bg-ring-3"></span>
+              <span class="hero-bg-pulse"></span>
+              <canvas class="hero-bg-particles" id="heroBgParticles"></canvas>
+            </div>
+            <div class="hero-photo-frame" id="heroTilt">
+              <img src="images/hero.jpg" alt="Louis, aka Crazy" class="hero-photo">
+              <div class="photo-fade"></div>
+              <div class="photo-duotone"></div>
+            </div>
+            <svg width="88" height="88" viewBox="0 0 40 40" fill="none" class="hero-badge">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+          </div>
+        </div>
+        <a href="#/about" class="scroll-cue" data-route="about" aria-label="Scroll to learn more">
+          <span></span>
+        </a>
+      </div>
+
+      <div class="goal-section" data-reveal>
+        <div class="goal-head">
+          <span class="goal-kicker">THE GOAL</span>
+          <h2 class="goal-title">TWITCH <span class="accent">PARTNER</span></h2>
+          <p class="goal-copy">I stream regularly and I'm closing in on Affiliate. Partner's the real goal I'm building toward, one stream at a time.</p>
+        </div>
+        <div class="goal-chart-card">
+          <svg class="goal-chart" viewBox="0 0 600 200" preserveAspectRatio="none" aria-hidden="true">
+            <defs>
+              <linearGradient id="goalAreaGrad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.35"/>
+                <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+              </linearGradient>
+            </defs>
+            <path class="goal-chart-area" d="M10,175 C70,172 95,150 140,142 C195,132 220,148 260,118 C310,90 335,108 375,82 C425,52 445,70 485,44 C525,18 550,32 585,12 L585,195 L10,195 Z" fill="url(#goalAreaGrad)"/>
+            <path class="goal-chart-line" d="M10,175 C70,172 95,150 140,142 C195,132 220,148 260,118 C310,90 335,108 375,82 C425,52 445,70 485,44 C525,18 550,32 585,12" stroke="var(--accent)" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+            <g class="goal-chart-marker goal-chart-marker-now">
+              <circle cx="10" cy="175" r="5" fill="var(--text-faint)"/>
+            </g>
+            <g class="goal-chart-marker goal-chart-marker-affiliate">
+              <circle cx="375" cy="82" r="6.5" fill="var(--accent)"/>
+            </g>
+            <g class="goal-chart-marker goal-chart-marker-partner">
+              <circle class="goal-chart-ping" cx="585" cy="12" r="8" fill="var(--accent)"/>
+              <circle cx="585" cy="12" r="7" fill="var(--accent)" stroke="var(--bg)" stroke-width="2.5"/>
+            </g>
+          </svg>
+          <div class="goal-chart-axis">
+            <div class="goal-chart-axis-item">
+              <span class="goal-chart-axis-dot goal-chart-axis-dot-now"></span>
+              <span class="goal-chart-axis-label">Streaming now</span>
+            </div>
+            <div class="goal-chart-axis-item">
+              <span class="goal-chart-axis-dot goal-chart-axis-dot-accent"></span>
+              <span class="goal-chart-axis-label">Affiliate<em>closing in</em></span>
+            </div>
+            <div class="goal-chart-axis-item goal-chart-axis-item-end">
+              <span class="goal-chart-axis-dot goal-chart-axis-dot-accent"></span>
+              <span class="goal-chart-axis-label">Partner<em>the goal</em></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="moving-section" data-reveal>
+        <div class="moving-banner">
+          <h2 class="moving-title">WHAT KEEPS ME MOVING EVERYDAY!!</h2>
+          <p class="moving-sub">The short version of why I do this.</p>
+        </div>
+        <div class="moving-cards">
+          <div class="moving-card moving-card-a" data-reveal data-reveal-group="moving">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <circle cx="17" cy="17" r="13" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17" cy="17" r="7" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="17" cy="17" r="1.8" fill="currentColor"/>
+              <path d="M17 1 V7 M17 27 V33 M1 17 H7 M27 17 H33" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <h3 class="moving-card-title">MY MISSION</h3>
+            <p class="moving-card-copy">I'm finishing my last requirement for Twitch Affiliate right now, with Partner as the real goal. Long term I want to grow into IRL and Just Chatting content and build a real YouTube channel alongside the stream.</p>
+          </div>
+          <div class="moving-card moving-card-b" data-reveal data-reveal-group="moving">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <path d="M17 30c-6-4.2-13-9.6-13-17A7.5 7.5 0 0 1 17 8.4 7.5 7.5 0 0 1 30 13c0 7.4-7 12.8-13 17z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+            <h3 class="moving-card-title">MY MOTIVATION</h3>
+            <p class="moving-card-copy">I'm still newer to streaming, but I've already built a genuinely tight knit community, and that's what keeps me going. I'm doing this while working full time, so every single stream matters.</p>
+          </div>
+          <div class="moving-card moving-card-c" data-reveal data-reveal-group="moving">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <path d="M4 7c4-2 9-2 13 1v19c-4-3-9-3-13-1V7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+              <path d="M30 7c-4-2-9-2-13 1v19c4-3 9-3 13-1V7z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+            </svg>
+            <h3 class="moving-card-title">MY STORY</h3>
+            <p class="moving-card-copy">By day I'm co-store manager at Ollie's Bargain Outlet. By night I'm a variety gamer building a streaming career from the ground up. Off camera I'm a reader, a paranormal nerd, an occasional ghost hunter, and a certified tornado enthusiast.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">WHAT'S NEXT</span>
+        </div>
+        <p class="roadmap-intro">Where I'm taking this from here.</p>
+        <div class="roadmap-list">
+          <div class="roadmap-item" data-reveal data-reveal-group="roadmap">
+            <span class="roadmap-index">01</span>
+            <div class="roadmap-body">
+              <h3 class="roadmap-item-title">GROWING INTO IRL</h3>
+              <p class="roadmap-item-copy">Branching out from variety gaming into IRL content.</p>
+            </div>
+          </div>
+          <div class="roadmap-item" data-reveal data-reveal-group="roadmap">
+            <span class="roadmap-index">02</span>
+            <div class="roadmap-body">
+              <h3 class="roadmap-item-title">MORE JUST CHATTING</h3>
+              <p class="roadmap-item-copy">More Just Chatting streams, more hanging out with chat.</p>
+            </div>
+          </div>
+          <div class="roadmap-item" data-reveal data-reveal-group="roadmap">
+            <span class="roadmap-index">03</span>
+            <div class="roadmap-body">
+              <h3 class="roadmap-item-title">A REAL YOUTUBE CHANNEL</h3>
+              <p class="roadmap-item-copy">Turning stream highlights into an actual YouTube channel.</p>
+            </div>
+          </div>
+          <div class="roadmap-item" data-reveal data-reveal-group="roadmap">
+            <span class="roadmap-index">04</span>
+            <div class="roadmap-body">
+              <h3 class="roadmap-item-title">INSTAGRAM &amp; FACEBOOK</h3>
+              <p class="roadmap-item-copy">Both coming soon, so I can meet people where they already are.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">ABOUT ME</span>
+          <a href="#/about" data-route="about" class="preview-link">Read my full story &rarr;</a>
+        </div>
+        <div class="about-preview-grid">
+          <div class="about-preview-photo">
+            <img src="images/about.jpg" alt="Louis smiling" class="about-photo">
+            <div class="photo-duotone"></div>
+          </div>
+          <blockquote class="pull-quote">I'm the resident yapper with no filter. I haven't been streaming long, but I've already built a genuinely tight knit community, so don't be afraid to stay awhile and talk.</blockquote>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">THE CRAZY HOUSE</span>
+          <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="preview-link">Join now &rarr;</a>
+        </div>
+        <div class="moving-cards">
+          <div class="moving-card moving-card-a" data-reveal data-reveal-group="spotlight">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <circle cx="13" cy="12" r="5" stroke="currentColor" stroke-width="1.8"/>
+              <circle cx="23" cy="15" r="4" stroke="currentColor" stroke-width="1.8"/>
+              <path d="M4 29c0-6 4-10 9-10s9 4 9 10" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+              <path d="M22 29c0-4 2.5-7 6-8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"/>
+            </svg>
+            <h3 class="moving-card-title">SMALL &amp; TIGHT-KNIT</h3>
+            <p class="moving-card-copy">It's not some massive server. It's a small, tight-knit crowd, and that's exactly the point.</p>
+          </div>
+          <div class="moving-card moving-card-b" data-reveal data-reveal-group="spotlight">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <path d="M6 8h22a2 2 0 0 1 2 2v13a2 2 0 0 1-2 2H14l-6 5v-5H6a2 2 0 0 1-2-2V10a2 2 0 0 1 2-2z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+              <path d="M10 15h14M10 20h9" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+            </svg>
+            <h3 class="moving-card-title">I ACTUALLY STICK AROUND</h3>
+            <p class="moving-card-copy">I talk to chat and I stick around. Don't be afraid to stay awhile and talk.</p>
+          </div>
+          <div class="moving-card moving-card-c" data-reveal data-reveal-group="spotlight">
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none" class="moving-icon">
+              <path d="M10 5h10a2 2 0 0 1 2 2v20a2 2 0 0 1-2 2H10z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+              <path d="M10 5L6 8v18l4 3" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" fill="none"/>
+              <circle cx="17" cy="17" r="1.4" fill="currentColor"/>
+            </svg>
+            <h3 class="moving-card-title">NEWCOMERS WELCOME</h3>
+            <p class="moving-card-copy">I'm still newer to streaming, but new faces are always welcome here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">CHANNEL INTRO</span>
+        </div>
+        <div class="video-embed" id="featuredVideo"></div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">SUPPORT THE STREAM</span>
+          <a href="#/support" data-route="support" class="preview-link">Learn more &rarr;</a>
+        </div>
+        <div class="support-preview-card">
+          <p class="support-preview-copy">I would never, ever ask directly, but if you ever feel like supporting the stream, it's genuinely appreciated.</p>
+          <div class="support-preview-actions">
+            <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="btn-fill btn-fill-sm magnetic">Donate</a>
+            <a href="https://www.twitch.tv/subs/thekidcrazy2005" target="_blank" rel="noopener" class="btn-fill btn-fill-sm magnetic">Subscribe</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">MY SPONSOR</span>
+          <a href="https://www.dubby.gg/discount/Thekidcrazy2005?ref=wmozlrph" target="_blank" rel="noopener" class="preview-link">Shop Dubby &rarr;</a>
+        </div>
+        <div class="sponsor-preview-card">
+          <span class="sponsor-preview-mark">DUBBY</span>
+          <div class="dubby-code dubby-code-sm">
+            <span class="dubby-code-label">CODE</span>
+            <span class="dubby-code-value">THEKIDCRAZY2005</span>
+            <span class="dubby-code-note">10% off</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">FAQ</span>
+        </div>
+        <div class="faq-list" id="faqList">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a1">
+              <span>What games do you play?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a1" hidden>
+              <p>I'm a variety gamer. My all-time favorite is Detroit: Become Human, and my current rotation includes World of Warcraft, Bookshop Simulator, Among Us, R.E.P.O., Other Side, Dead by Daylight, Waterpark Simulator, Wobbly Life, PalWorld, and Minecraft. I own a lot more than that too.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a2">
+              <span>Do you take game requests?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a2" hidden>
+              <p>Yes. Drop a request in chat and I'll add it to the list.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a3">
+              <span>When do you stream?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a3" hidden>
+              <p>It depends on my day job. On work days I usually go live around 5PM EST for 4 to 5 hours. On days off I start in the afternoon and go 8 to 9 hours. Sundays are off.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a4">
+              <span>Where do you post your weekly schedule?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a4" hidden>
+              <p>Fresh every week on Twitter and in Discord, since my exact days change week to week around my day job.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a5">
+              <span>Are you Twitch Affiliate or Partner?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a5" hidden>
+              <p>I'm finishing my last requirement for Affiliate right now. Partner is the goal I'm building toward.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="faq-a6">
+              <span>Do you do IRL streams?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="faq-a6" hidden>
+              <p>Every once in a while I'll attempt one. I'm hoping to grow more into IRL and Just Chatting content over time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">PRESS &amp; MEDIA KIT</span>
+        </div>
+        <div class="press-kit-card">
+          <div class="press-kit-mark">
+            <svg width="30" height="30" viewBox="0 0 40 40" fill="none">
+              <circle cx="20" cy="20" r="16" fill="#39FF14" stroke="#060706" stroke-width="2.2"/>
+              <path d="M11 13 L18 20 M18 13 L11 20" stroke="#060706" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M22 13 L29 20 M29 13 L22 20" stroke="#060706" stroke-width="2.2" stroke-linecap="round"/>
+              <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#060706" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            <span class="press-kit-name">Louis &quot;Crazy&quot; Ingram</span>
+          </div>
+          <p class="press-kit-bio">Variety gamer and Twitch streamer based in Delaware, building toward Affiliate and Partner with a genuinely tight knit community. Full time co-store manager by day, streamer on the rise by night.</p>
+          <div class="press-kit-swatches" id="pressKitSwatches">
+            <button type="button" class="press-kit-swatch" data-theme-opt="signature" aria-label="Switch site theme to Signature (Neon Green)">
+              <span class="press-kit-swatch-dot" style="--swatch-color:#39FF14"></span>
+              <span class="press-kit-swatch-label">Neon Green<br><code>#39FF14</code></span>
+            </button>
+            <button type="button" class="press-kit-swatch" data-theme-opt="midnight-mono" aria-label="Switch site theme to Black (Midnight Mono)">
+              <span class="press-kit-swatch-dot" style="--swatch-color:#060706"></span>
+              <span class="press-kit-swatch-label">Black<br><code>#060706</code></span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="preview-section" data-reveal>
+        <div class="preview-head">
+          <span class="preview-kicker">BRAND &amp; COLLAB INQUIRIES</span>
+        </div>
+        <div class="contact-card">
+          <p class="contact-copy">Got a collab or sponsorship idea? Reach out and I'll get back to you.</p>
+          <div class="contact-actions">
+            <button class="contact-email-btn" id="copyEmailBtn" data-email="asherquo@gmail.com" type="button">
+              <span>asherquo@gmail.com</span>
+              <span class="contact-copy-feedback" id="copyFeedback">Copied</span>
+            </button>
+            <a href="mailto:asherquo@gmail.com" class="btn-outline">Open in email app</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="view" data-view="about" id="view-about">
+    <div class="about-bg-video-wrap" id="aboutBgVideoWrap" aria-hidden="true">
+      <div class="about-bg-video-scrim"></div>
+      <div class="about-bg-video-tint"></div>
+    </div>
+    <div class="view-scroll">
+      <div class="page-head" data-reveal>
+        <svg width="42" height="42" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+        <h2 class="page-title">ABOUT <span class="accent">ME</span></h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-photo-frame" data-reveal>
+          <img src="images/about.jpg" alt="Louis smiling" class="about-photo">
+          <div class="photo-duotone"></div>
+        </div>
+        <div>
+          <p class="about-lede" data-reveal>
+            I'm the resident yapper with no filter. I love reading in my free time, anything paranormal, and I dabble in ghost hunting when I get the chance. I'm also a certified tornado enthusiast. Every once in a while I'll attempt an IRL stream too.
+          </p>
+          <p class="about-sub" data-reveal>I haven't been streaming long, but I've already built a genuinely lovely, tight knit community. Don't be afraid to stay awhile and talk.</p>
+          <p class="about-sub" data-reveal>Full time co-store manager at Ollie's Bargain Outlet by day. Streamer on the rise by night.</p>
+        </div>
+      </div>
+
+      <div class="about-extra-section" data-reveal>
+        <span class="dubby-kicker">QUICK FACTS</span>
+        <div class="quick-facts-strip">
+          <div class="quick-fact" data-reveal data-reveal-group="quickfacts">
+            <span class="quick-fact-label">LOCATION</span>
+            <span class="quick-fact-value">Delaware</span>
+          </div>
+          <div class="quick-fact" data-reveal data-reveal-group="quickfacts">
+            <span class="quick-fact-label">DAY JOB</span>
+            <span class="quick-fact-value">Co-Store Manager, Ollie's</span>
+          </div>
+          <div class="quick-fact" data-reveal data-reveal-group="quickfacts">
+            <span class="quick-fact-label">STREAMING STYLE</span>
+            <span class="quick-fact-value">Variety Gamer</span>
+          </div>
+          <div class="quick-fact" data-reveal data-reveal-group="quickfacts">
+            <span class="quick-fact-label">COMMUNITY VIBE</span>
+            <span class="quick-fact-value">Tight-Knit, Still Growing</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-extra-section" data-reveal>
+        <span class="dubby-kicker">INTERESTS</span>
+        <div class="interest-cards" id="interestCards"></div>
+      </div>
+
+      <div class="about-extra-section" data-reveal>
+        <span class="dubby-kicker">A LITTLE MORE ABOUT ME</span>
+        <div class="faq-list" id="aboutQaList">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="qa-a1">
+              <span>What are you currently working toward?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="qa-a1" hidden>
+              <p>Finishing my last requirement for Twitch Affiliate right now, with Partner as the real goal I'm building toward.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="qa-a2">
+              <span>How do you unwind off stream?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="qa-a2" hidden>
+              <p>Reading, anything paranormal, and the occasional ghost hunt when I get the chance.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="qa-a3">
+              <span>Any plans to grow beyond gaming content?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="qa-a3" hidden>
+              <p>Yes. I want to grow into IRL and Just Chatting content, and eventually build a real YouTube channel alongside the stream.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false" aria-controls="qa-a4">
+              <span>What's the community like?</span><span class="faq-icon" aria-hidden="true"></span>
+            </button>
+            <div class="faq-answer" id="qa-a4" hidden>
+              <p>Small and tight-knit. I haven't been streaming long, but it's already a genuinely lovely crowd, and there's always room to stay awhile and talk.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GAMES -->
+  <section class="view" data-view="games" id="view-games">
+    <div class="view-scroll">
+      <div class="page-head" data-reveal>
+        <svg width="42" height="42" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+        <h2 class="page-title">MY <span class="accent">GAMES</span></h2>
+      </div>
+      <div class="favorite-card" data-reveal>
+        <div>
+          <div class="favorite-kicker">ALL-TIME FAVORITE</div>
+          <div class="favorite-title">Detroit: Become Human</div>
+        </div>
+        <p class="favorite-copy">What a wonderful storyline and such a clean game. I love how the story plays out and how polished the whole thing feels.</p>
+      </div>
+
+      <div class="dbd-callout" data-reveal>
+        <svg width="30" height="30" viewBox="0 0 34 34" fill="none" class="dbd-icon">
+          <path d="M17 29C10 24 5 19 5 13a6 6 0 0 1 12-2 6 6 0 0 1 12 2c0 6-5 11-12 16z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <path d="M17 11l-2 5 3 2-2 6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+        </svg>
+        <div>
+          <div class="dbd-title">DEAD BY DAYLIGHT <span class="dbd-tag">MOST HOURS PLAYED</span></div>
+          <p class="dbd-copy">Love/hate relationship. Currently uninstalled <em>(it's complicated)</em>.</p>
+        </div>
+      </div>
+
+      <div class="games-section-label" data-reveal>IN ROTATION NOW</div>
+      <div class="games-grid" id="games-grid"></div>
+
+      <div class="request-game-card" data-reveal>
+        <div>
+          <div class="request-game-title">DON'T SEE YOUR GAME?</div>
+          <p class="request-game-copy">I own a lot more than what's listed here. Drop a request in Discord and I'll add it to the list.</p>
+        </div>
+        <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="btn-fill magnetic">Request in Discord</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCHEDULE -->
+  <section class="view" data-view="schedule" id="view-schedule">
+    <div class="view-scroll">
+      <div class="page-head" data-reveal>
+        <svg width="42" height="42" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+        <h2 class="page-title">SCHED<span class="accent">ULE</span></h2>
+      </div>
+      <div class="schedule-grid">
+        <div>
+          <div class="schedule-cards">
+            <div class="schedule-card" data-reveal data-reveal-group="sched">
+              <div class="schedule-card-label">SUNDAY</div>
+              <div class="schedule-card-value">Off</div>
+              <p class="schedule-card-note">I take Sundays off. No stream, just recharge.</p>
+            </div>
+            <div class="schedule-card schedule-card-accent" data-reveal data-reveal-group="sched">
+              <div class="schedule-card-label accent">AFTER A WORK SHIFT</div>
+              <div class="schedule-card-value">~4 to 5 hrs, from 5PM EST</div>
+              <p class="schedule-card-note">Most Mon to Sat work days.</p>
+            </div>
+            <div class="schedule-card schedule-card-accent" data-reveal data-reveal-group="sched">
+              <div class="schedule-card-label accent">ON A DAY OFF WORK</div>
+              <div class="schedule-card-value">~8 to 9 hrs, from the afternoon</div>
+              <p class="schedule-card-note">Varies which days week to week.</p>
+            </div>
+          </div>
+          <p class="schedule-copy" data-reveal>
+            My schedule isn't a set one since it's built around my day job. Which days I work and which days I have off changes week to week, so I post a fresh schedule every week on Twitter and in Discord under the stream schedule channel. Check there for this week's exact lineup.
+          </p>
+        </div>
+        <div class="schedule-photo-frame" data-reveal>
+          <img src="images/schedule.jpg" alt="Louis at home" class="schedule-photo">
+          <div class="photo-duotone"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOCIALS -->
+  <section class="view" data-view="socials" id="view-socials">
+    <div class="view-scroll">
+      <div class="page-head" data-reveal>
+        <svg width="42" height="42" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+        <h2 class="page-title">SOCI<span class="accent">ALS</span></h2>
+      </div>
+
+      <div class="socials-quickscan" data-reveal>
+        <span class="socials-quickscan-label">YOU'LL FIND ME HERE</span>
+        <div class="socials-quickscan-row">
+          <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="quickscan-chip">
+            <svg width="18" height="18" viewBox="0 0 34 34" fill="none"><path d="M6 4h20v14l-5 5h-5l-3 3H9v-3H4V9l2-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 10v6M20 10v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Twitch</span>
+          </a>
+          <a href="https://x.com/thekidcrazy2005" target="_blank" rel="noopener" class="quickscan-chip">
+            <svg width="18" height="18" viewBox="0 0 34 34" fill="none"><path d="M7 7l20 20M27 7L7 27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <span>Twitter / X</span>
+          </a>
+          <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="quickscan-chip">
+            <svg width="18" height="18" viewBox="0 0 34 34" fill="none"><path d="M6 25c0-9 3-16 3-16s3-2 8-2 8 2 8 2 3 7 3 16c0 0-4 3-11 3s-11-3-11-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="13" cy="18" r="1.6" fill="currentColor"/><circle cx="21" cy="18" r="1.6" fill="currentColor"/></svg>
+            <span>Discord</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="reach-note" data-reveal>
+        <span class="reach-note-title">BEST WAY TO REACH ME</span>
+        <ul class="reach-note-list">
+          <li><strong>Twitch</strong> &mdash; for the actual streams</li>
+          <li><strong>Twitter / X</strong> &mdash; schedule updates and quick posts</li>
+          <li><strong>Discord</strong> &mdash; for actually chatting with me and the community</li>
+        </ul>
+      </div>
+
+      <div class="discord-feature" data-reveal>
+        <svg width="38" height="38" viewBox="0 0 34 34" fill="none" class="moving-icon">
+          <path d="M6 25c0-9 3-16 3-16s3-2 8-2 8 2 8 2 3 7 3 16c0 0-4 3-11 3s-11-3-11-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+          <circle cx="13" cy="18" r="1.6" fill="currentColor"/>
+          <circle cx="21" cy="18" r="1.6" fill="currentColor"/>
+        </svg>
+        <p class="discord-copy">
+          Come hang out in <strong class="accent">The Crazy House</strong>. It's schedules, chat, and a genuinely tight knit crowd who don't mind if you stick around and talk.
+        </p>
+        <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="btn-fill magnetic">Join The Crazy House</a>
+      </div>
+
+      <div class="socials-grid">
+        <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="social-card social-card-link" data-reveal data-reveal-group="soc">
+          <div class="social-card-label accent">TWITCH <span class="social-card-badge">PRIMARY</span></div>
+          <div class="social-card-value">thekidcrazy2005</div>
+        </a>
+        <a href="https://x.com/thekidcrazy2005" target="_blank" rel="noopener" class="social-card social-card-link" data-reveal data-reveal-group="soc">
+          <div class="social-card-label accent">TWITTER / X</div>
+          <div class="social-card-value">@thekidcrazy2005</div>
+        </a>
+        <div class="social-card social-card-soon" data-reveal data-reveal-group="soc">
+          <div class="social-card-label">INSTAGRAM</div>
+          <div class="social-card-value">Coming soon</div>
+        </div>
+        <div class="social-card social-card-soon" data-reveal data-reveal-group="soc">
+          <div class="social-card-label">FACEBOOK GROUP</div>
+          <div class="social-card-value">Coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUPPORT -->
+  <section class="view" data-view="support" id="view-support">
+    <div class="view-scroll">
+      <div class="page-head page-head-center" data-reveal>
+        <svg width="42" height="42" viewBox="0 0 40 40" fill="none" class="mascot-glow">
+      <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+      <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+      <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+        <h2 class="page-title">SUPPORT THE <span class="accent">STREAM</span></h2>
+      </div>
+      <p class="support-copy" data-reveal>
+        I would never, ever ask directly, but if you ever feel like supporting the stream, it's genuinely appreciated. Every bit helps keep the lights, and the stream, on.
+      </p>
+      <div class="support-donate-wrap" data-reveal>
+        <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="btn-fill magnetic">Donate</a>
+        <a href="https://www.twitch.tv/subs/thekidcrazy2005" target="_blank" rel="noopener" class="btn-fill magnetic">Subscribe</a>
+      </div>
+
+      <div class="dubby-card" data-reveal>
+        <div class="dubby-head">
+          <span class="dubby-kicker">MY SPONSOR</span>
+          <span class="dubby-mark">DUBBY</span>
+        </div>
+        <p class="dubby-copy">Official sponsor, not a way to support the stream directly, just a deal I get to pass on. Fuel for grind sessions.</p>
+        <div class="dubby-code">
+          <span class="dubby-code-label">CODE</span>
+          <span class="dubby-code-value">THEKIDCRAZY2005</span>
+          <span class="dubby-code-note">10% off your order</span>
+        </div>
+        <a href="https://www.dubby.gg/discount/Thekidcrazy2005?ref=wmozlrph" target="_blank" rel="noopener" class="btn-fill btn-fill-sm magnetic">Shop Dubby</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="footer-brand-col">
+    <div class="footer-brand">
+      <svg width="22" height="22" viewBox="0 0 40 40" fill="none">
+        <circle cx="20" cy="20" r="16" fill="#FFE600" stroke="#0a0a0a" stroke-width="2.2"/>
+        <path d="M11 13 L18 20 M18 13 L11 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M22 13 L29 20 M29 13 L22 20" stroke="#0a0a0a" stroke-width="2.2" stroke-linecap="round"/>
+        <path d="M9 25 L12.7 33 L16.3 25 L20 33 L23.7 25 L27.3 33 L31 25" stroke="#0a0a0a" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <span class="brand-word">CRAZY</span>
+    </div>
+    <div class="footer-socials">
+      <a href="https://www.twitch.tv/thekidcrazy2005" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Twitch">
+        <svg width="22" height="22" viewBox="0 0 34 34" fill="none"><path d="M6 4h20v14l-5 5h-5l-3 3H9v-3H4V9l2-5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M15 10v6M20 10v6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://x.com/thekidcrazy2005" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Twitter / X">
+        <svg width="22" height="22" viewBox="0 0 34 34" fill="none"><path d="M7 7l20 20M27 7L7 27" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </a>
+      <a href="https://discord.gg/NaYumEpfP" target="_blank" rel="noopener" class="footer-social-icon" aria-label="Discord">
+        <svg width="22" height="22" viewBox="0 0 34 34" fill="none"><path d="M6 25c0-9 3-16 3-16s3-2 8-2 8 2 8 2 3 7 3 16c0 0-4 3-11 3s-11-3-11-3z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="13" cy="18" r="1.6" fill="currentColor"/><circle cx="21" cy="18" r="1.6" fill="currentColor"/></svg>
+      </a>
+    </div>
+  </div>
+  <div class="footer-meta">Louis Ingram &middot; Delaware &middot; twitch.tv/thekidcrazy2005</div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
