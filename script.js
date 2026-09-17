@@ -75,17 +75,17 @@
   // capsule art) or a direct hosted image URL (e.g. a GitHub raw link). Leave `cover` empty
   // and that card renders a clean placeholder tile instead, no broken image, no distortion.
   const games = [
-    { name: 'World of Warcraft', cover: '' }, // suggested: images/games/world-of-warcraft.jpg
-    { name: 'Bookshop Simulator', cover: '' }, // suggested: images/games/bookshop-simulator.jpg
-    { name: 'Among Us', cover: '' }, // suggested: images/games/among-us.jpg
-    { name: 'R.E.P.O.', cover: '' }, // suggested: images/games/repo.jpg
-    { name: 'Other Side', cover: '' }, // suggested: images/games/other-side.jpg
-    { name: 'Dead by Daylight', cover: '' }, // suggested: images/games/dead-by-daylight.jpg
-    { name: 'Waterpark Simulator', cover: '' }, // suggested: images/games/waterpark-simulator.jpg
-    { name: 'Wobbly Life', cover: '' }, // suggested: images/games/wobbly-life.jpg
-    { name: 'PalWorld', cover: '' }, // suggested: images/games/palworld.jpg
-    { name: 'Minecraft', cover: '' }, // suggested: images/games/minecraft.jpg
-  ];
+  { name: 'World of Warcraft', cover: 'images/Word warcraft.jpg' },
+  { name: 'Bookshop Simulator', cover: 'images/Book simulator.jpg' },
+  { name: 'Among Us', cover: 'images/Among us.jpg' },
+  { name: 'R.E.P.O.', cover: 'images/Repo.jpg' },
+  { name: 'Other Side', cover: 'images/Other side.jpg' },
+  { name: 'Dead by Daylight', cover: 'images/Dead bu dayligh.jpg' },
+  { name: 'Waterpark Simulator', cover: 'images/Water park simulatoe.jpg' },
+  { name: 'Wobbly Life', cover: 'images/Wobby Life.jpg' },
+  { name: 'PalWorld', cover: 'images/Plaworld.jpg' },
+  { name: 'Minecraft', cover: 'images/Mincraft.jpg' },
+];
   const gameCardPlaceholderIcon = '<path d="M9 13h16a4 4 0 0 1 4 4v6a3 3 0 0 1-5.3 1.9L21.5 22h-9L10 24.9A3 3 0 0 1 5 23v-6a4 4 0 0 1 4-4z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M11.5 15.5v5M9 18h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="23" cy="17" r="1.3" fill="currentColor"/><circle cx="26" cy="19.5" r="1.3" fill="currentColor"/>';
 
   const interestCards = document.getElementById('interestCards');
