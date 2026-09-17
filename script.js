@@ -668,3 +668,27 @@
   if (!prefersReducedMotion) draw();
   else { ctx.clearRect(0, 0, canvas.width, canvas.height); }
 })();
+
+// --- Site logo swap ---
+(function(){
+  var LOGO_SRC = 'images/Thecrazy.png';
+  var selectors = ['.splash-mascot', '.mascot-glow', '.hero-badge', '.footer-brand svg', '.press-kit-mark svg'];
+  document.addEventListener('DOMContentLoaded', function(){
+    selectors.forEach(function(sel){
+      document.querySelectorAll(sel).forEach(function(svg){
+        var w = svg.getAttribute('width') || 30;
+        var h = svg.getAttribute('height') || 30;
+        var img = document.createElement('img');
+        img.src = LOGO_SRC;
+        img.alt = 'Crazy logo';
+        img.style.width = w + 'px';
+        img.style.height = h + 'px';
+        img.style.objectFit = 'contain';
+        img.style.borderRadius = '50%';
+        img.style.background = '#060706';
+        img.style.padding = '2px';
+        svg.parentNode.replaceChild(img, svg);
+      });
+    });
+  });
+})();
